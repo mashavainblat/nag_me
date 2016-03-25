@@ -2,9 +2,14 @@ var express = require("express");
 var app = express();
 var port = process.env.PORT || 3000;
 var mongoose = require("mongoose");
+var bodyParser = require("body-parser");
 
 //MIDDLEWARE
 app.use(express.static("public"));
+// app.use(bodyParser.urlencoded({extended:true}));
+//for all incoming urls
+//can expect json data
+app.use(bodyParser.json());
 
 //CONTROLLERS
 var usersController = require("./controllers/users.js");

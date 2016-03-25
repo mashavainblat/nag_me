@@ -11,6 +11,17 @@ router.get("/json", function(req, res){
 	});
 });
 
+//POST
+router.post("/", function(req, res){
+	// res.send(req.body)
+	var newUser = new User(req.body);
+	console.log(newUser)
+	newUser.save(function(error, data){
+		res.send(data)
+	})
+
+});
+
 module.exports = router;
 
 	// res.send("Users");
