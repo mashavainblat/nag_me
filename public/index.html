@@ -7,6 +7,19 @@
 </head>
 <body>
 	<h1>Indexing</h1>
-	<ul ng-controller="UsersController as users"></ul>
+	<ul ng-controller="UsersController as usersCtrl">
+		<li ng-repeat="user in usersCtrl.users">
+			{{user.firstName}} {{user.lastName}}
+		</li>
+	</ul>
+
+	<form ng-submit="formCtrl.create()" ng-controller="FormController as formCtrl">
+		<input ng-model="formCtrl.firstName" type="text" placeholder="First Name"/><br>
+		<input ng-model="formCtrl.lastName" type="text" placeholder="Last Name"/><br>
+		<input ng-model="formCtrl.email" type="text" placeholder="Email"/><br>
+		<input ng-model="formCtrl.password" type="password" placeholder="Password"/><br>
+		<input ng-model="formCtrl.phoneNumber" type="text" placeholder="Phone Number"/><br>
+		<button>Submit</button>
+	</form>
 </body>
 </html>
