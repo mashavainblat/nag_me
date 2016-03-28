@@ -1,0 +1,7 @@
+<h1>{{loginCtrl.testLogin}}</h1>
+
+	<form ng-submit="formCtrl.create()" ng-controller="FormController as formCtrl">
+		<input ng-model="formCtrl.email" type="text" placeholder="Email"/><br>
+		<input ng-model="formCtrl.password" type="password" placeholder="Password"/><br>
+		<button>Submit</button>
+	</form>

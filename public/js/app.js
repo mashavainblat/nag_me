@@ -1,4 +1,8 @@
-var app = angular.module("NagMe", []);
+var app = angular.module("NagMe", ["header-directive", "signup-directive", "login-directive", "list-directive", "footer-directive"]);
+
+app.controller("BodyController", [function(){
+	
+}])
 
 //need to access ajax service which is HTTP in angular
 app.controller("UsersController", ["$http", function($http){
@@ -40,7 +44,7 @@ app.controller("FormController", ["$http", function($http){
 		}).then(
 			//success
 			function(response){
-				console.log(response)
+				// console.log(response)
 			},
 			//failure
 			function(error){

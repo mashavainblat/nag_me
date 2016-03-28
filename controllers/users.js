@@ -1,9 +1,10 @@
 var express = require("express");
 var router = express.Router();
 var User = require("../models/user.js");
+var passport = require("passport");
 
 router.get("/json", function(req, res){
-	console.log("users controller")
+	// console.log("users controller")
 	//ACCESSES DATABASE
 	User.find({}, function(err, users){
 		//feeds the view

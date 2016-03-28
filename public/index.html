@@ -4,22 +4,34 @@
 	<title>Nag Me</title>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
+	<script src="js/controllers/headerController.js"></script>
+	<script src="js/controllers/signupController.js"></script>
+	<script src="js/controllers/loginController.js"></script>
+	<script src="js/controllers/listController.js"></script>
+	<script src="js/controllers/footerController.js"></script>
+
+	<script src="js/header.js"></script>
+	<script src="js/signup.js"></script>
+	<script src="js/login.js"></script>
+	<script src="js/list.js"></script>
+	<script src="js/footer.js"></script>
 </head>
-<body>
-	<h1>Indexing</h1>
+<body ng-controller="BodyController as bodyCtrl">
+	{{bodyCtrl.test}}
+	<header-directive></header-directive>
+
+	<signup-directive></signup-directive>
+	<login-directive></login-directive>
+
+	<list-directive></list-directive>
+
 	<ul ng-controller="UsersController as usersCtrl">
+	<h3>Users</h3>
 		<li ng-repeat="user in usersCtrl.users">
 			{{user.firstName}} {{user.lastName}}
 		</li>
 	</ul>
 
-	<form ng-submit="formCtrl.create()" ng-controller="FormController as formCtrl">
-		<input ng-model="formCtrl.firstName" type="text" placeholder="First Name"/><br>
-		<input ng-model="formCtrl.lastName" type="text" placeholder="Last Name"/><br>
-		<input ng-model="formCtrl.email" type="text" placeholder="Email"/><br>
-		<input ng-model="formCtrl.password" type="password" placeholder="Password"/><br>
-		<input ng-model="formCtrl.phoneNumber" type="text" placeholder="Phone Number"/><br>
-		<button>Submit</button>
-	</form>
+	<footer-directive></footer-directive>
 </body>
 </html>
