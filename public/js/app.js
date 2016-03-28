@@ -24,4 +24,5 @@ app.controller("BodyController", ["$http", function($http){
 		}
 	)
 }])
-})();
+
+})(); //ends window onload function

@@ -1,6 +1,7 @@
 <h1>{{signupCtrl.testSignup}}</h1>
 
-	<form ng-submit="signupCtrl.create()" ng-controller="SignupController as signupCtrl">
+
+	<form ng-if="signupCtrl.user.loggedIn" ng-submit="signupCtrl.signup()" ng-controller="SignupController as signupCtrl">
 		<input ng-model="signupCtrl.firstName" type="text" placeholder="First Name"/><br>
 		<input ng-model="signupCtrl.lastName" type="text" placeholder="Last Name"/><br>
 		<input ng-model="signupCtrl.email" type="text" placeholder="Email"/><br>

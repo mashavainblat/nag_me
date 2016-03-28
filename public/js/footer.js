@@ -1,4 +1,4 @@
-var app = angular.module("footer-directive", ["FooterController"])
+var app = angular.module("footer-directive", ["FooterController", "logout-directive"])
 
 app.directive("footerDirective", function(){
 	return{

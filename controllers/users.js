@@ -19,7 +19,7 @@ router.get("/json", function(req, res){
 //================================
 
 //POST
-router.post("/", passport.authenticate("local-signup", 
+router.post("/signup", passport.authenticate("local-signup", 
 	{failureRedirect: "/"}), 
 	function(req, res){
 	// res.send(req.body)
