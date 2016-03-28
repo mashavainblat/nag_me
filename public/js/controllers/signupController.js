@@ -4,6 +4,19 @@ app.controller("SignupController", ["$http", function($http){
 	this.testSignup = "SIGNUP"
 
 	var self = this;
+
+	$http.get("/users/json").then(
+		//success
+		function(response){
+			self.users = response.data
+			// console.log(response.data)
+		},
+		//failure
+		function(error){
+			console.log(error)
+		}//closes .then
+	)//closes $http.get
+
 	//called on ng-submit
 	//when form data submits... 
 	this.create = function(){
@@ -20,7 +33,7 @@ app.controller("SignupController", ["$http", function($http){
 		}).then(
 			//success
 			function(response){
-				// console.log(response)
+				console.log(response)
 			},
 			//failure
 			function(error){

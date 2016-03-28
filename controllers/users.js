@@ -12,27 +12,30 @@ router.get("/json", function(req, res){
 	});
 });
 
-//POST
-router.post("/", function(req, res){
-	// res.send(req.body)
-	var newUser = new User(req.body);
-	console.log(newUser)
-	newUser.save(function(error, data){
-		res.send(data)
-	})
 
-});
+//CREATE USER
+//================================
+// SIGNUP
+//================================
+
+//POST
+router.post("/", passport.authenticate("local-signup", 
+	{failureRedirect: "/"}), 
+	function(req, res){
+	// res.send(req.body)
+		// var newUser = new User(req.body);
+		res.cookie("userid", req.user.id);
+		res.cookie("userFirstName", req.user.firstName);
+		res.cookie("userLastName", req.user.lastName);
+		res.cookie("userEmail", req.user.Email);
+		res.cookie("userPhoneNumber", req.user.phoneNumber);
+
+		// console.log(newUser)
+		// newUser.save(function(error, data){
+		console.log(req.user)
+		res.json({success: true});
+		// })
+	}
+);
 
 module.exports = router;
-
-	// res.send("Users");
-	// var newUser = new User({
-	// 	firstName: "Miriam",
-	// 	lastName: "Vainblat",
-	// 	email: "miriam@gmail.com",
-	// 	password: "miriam",
-	// 	phoneNumber: "+5162321815"
-	// });
-	// newUser.save(function(err, data){
-	// 	console.log("Miriam is saved")
-	// })

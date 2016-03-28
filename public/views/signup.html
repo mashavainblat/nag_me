@@ -1,10 +1,10 @@
 <h1>{{signupCtrl.testSignup}}</h1>
 
-	<form ng-submit="formCtrl.create()" ng-controller="FormController as formCtrl">
-		<input ng-model="formCtrl.firstName" type="text" placeholder="First Name"/><br>
-		<input ng-model="formCtrl.lastName" type="text" placeholder="Last Name"/><br>
-		<input ng-model="formCtrl.email" type="text" placeholder="Email"/><br>
-		<input ng-model="formCtrl.password" type="password" placeholder="Password"/><br>
-		<input ng-model="formCtrl.phoneNumber" type="text" placeholder="Phone Number"/><br>
+	<form ng-submit="signupCtrl.create()" ng-controller="SignupController as signupCtrl">
+		<input ng-model="signupCtrl.firstName" type="text" placeholder="First Name"/><br>
+		<input ng-model="signupCtrl.lastName" type="text" placeholder="Last Name"/><br>
+		<input ng-model="signupCtrl.email" type="text" placeholder="Email"/><br>
+		<input ng-model="signupCtrl.password" type="password" placeholder="Password"/><br>
+		<input ng-model="signupCtrl.phoneNumber" type="text" placeholder="Phone Number"/><br>
 		<button>Submit</button>
 	</form>
