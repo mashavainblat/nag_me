@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 
 require('./config/passport')(passport);
 
+app.use(session({name: 'nag-me', secret: 'idk what I am doing'}));
 app.use(passport.initialize());
 app.use(passport.session());
 

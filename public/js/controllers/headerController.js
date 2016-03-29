@@ -1,24 +1,9 @@
-var app = angular.module("HeaderController", ["ngCookies"]);
+var app = angular.module("HeaderController", []);
 
-app.controller("HeaderController", ["$http", "$cookies", function($http, $cookies){
+app.controller("HeaderController", ["$http", "$scope", function($http, $scope){
 	var self = this;
 	// this.list = []
 	this.user = {}
-
-	var cookies = $cookies.getAll();
-	
-		if (cookies.userFirstName && cookies.userLastName && cookies.userEmail && cookies.userPhoneNumber){
-		self.user = {
-			firstName: cookies.userFirstName,
-			lastName: cookies.userLastName,
-			email: cookies.userEmail,
-			password: cookies.userPassword,
-			phoneNumber: cookies.userPhoneNumber,
-			list: cookies.userList,
-			loggedIn: true
-		};
-	};
-	console.log(cookies);
 
 	this.addListItem = function(){
 		$http({
@@ -27,9 +12,8 @@ app.controller("HeaderController", ["$http", "$cookies", function($http, $cookie
 			data: this
 		}).then(
 			function(response){
-				console.log(response)
-				var cookies = $cookies.getAll();
-				console.log(cookies)
+				console.log('This is the response from the server: ', response);
+
 			},
 			function(error){
 				console.log(error)

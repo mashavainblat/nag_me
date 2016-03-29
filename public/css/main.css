@@ -1,0 +1,47 @@
+*{
+	margin:0px;
+}
+
+body{
+	position:relative;
+}
+
+/* HEADER */
+/******************************************/
+header{
+	background-color:skyblue;
+}
+header-directive img, header-directive form{
+	display:inline;
+}
+header-directive button{
+	background-color:rgba(255,255,255,0);
+	border:0;
+	padding:0;
+}
+
+header-directive button img{
+	width:10px;
+}
+/* FOOTER */
+/******************************************/
+footer{
+	background-color:skyblue;
+}
+
+logout-directive p, logout-directive button{
+	display:inline;
+}
+
+footer logout-directive button{
+	border:0;
+	background-color:skyblue;
+}
+
+footer logout-directive button:hover{
+	cursor:pointer;
+}
+
+logout-directive button{
+	float:right;
+}

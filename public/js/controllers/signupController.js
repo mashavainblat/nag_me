@@ -1,28 +1,11 @@
-var app = angular.module("SignupController", ["ngCookies"]);
+var app = angular.module("SignupController", []);
 
-app.controller("SignupController", ["$http", "$scope", "$cookies", function($http, $scope, $cookies){
+app.controller("SignupController", ["$http", "$scope", function($http, $scope){
 	this.testSignup = "SIGNUP"
 
 	var self = this;
 	this.user = {};
 	this.user.loggedIn = false;
-
-	//get all local cookies
-	var cookies = $cookies.getAll();
-
-	//determine if user has cookies that would signal if they're logged in
-	//if so, create user object with their info
-	if (cookies.userFirstname && cookies.userLastName && cookies.userEmail && cookies.userPhoneNumber){
-		self.user = {
-			firstName: cookies.userFirstName,
-			lastName: cookies.userLastName,
-			email: cookies.userEmail,
-			password: cookies.userPassword,
-			phoneNumber: cookies.userPhoneNumber,
-			list: cookies.userList,
-			loggedIn: true
-		};
-	};
 
 	//called on ng-submit
 	//when form data submits... 
@@ -42,17 +25,6 @@ app.controller("SignupController", ["$http", "$scope", "$cookies", function($htt
 			function(response){
 				console.log(response)
 				console.log(self)
-				var cookies = $cookies.getAll();
-				self.user = {
-					firstName: cookies.userFirstName,
-					lastName: cookies.userLastName,
-					email: cookies.userEmail,
-					phoneNumber: cookies.userPhoneNumber,
-					list: cookies.userList
-				};
-				if (cookies.userFirstName != null) {
-					self.user.loggedIn = true
-				};
 			},
 			//failure
 			function(error){

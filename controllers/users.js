@@ -21,12 +21,6 @@ router.get("/json", function(req, res){
 router.post("/signup", passport.authenticate("local-signup", 
 	{failureRedirect: "/"}), 
 	function(req, res){
-		res.cookie("userid", req.user.id);
-		res.cookie("userFirstName", req.user.firstName);
-		res.cookie("userLastName", req.user.lastName);
-		res.cookie("userEmail", req.user.email);
-		res.cookie("userPhoneNumber", req.user.phoneNumber);
-		res.cookie("userList", req.user.list);
 		console.log(req.user)
 		res.json({success: true});
 	}
@@ -38,13 +32,7 @@ router.post("/signup", passport.authenticate("local-signup",
 router.post("/login", passport.authenticate("local-login", 
 	{failureMessage: "fail"}), 
 	function(req, res){
-		res.cookie("userid", req.user.id);
-		res.cookie("userFirstName", req.user.firstName);
-		res.cookie("userLastName", req.user.lastName);
-		res.cookie("userEmail", req.user.email);
-		res.cookie("userPhoneNumber", req.user.phoneNumber);
-		res.cookie("userList", req.user.list);
-		console.log(req.user)
+		console.log('User is logged in as: ', req.user);
 		res.json(req.user)
 	}
 )
@@ -54,20 +42,20 @@ router.post("/login", passport.authenticate("local-login",
 // LOGOUT
 //================================
 router.get("/logout", function(req, res){
+	console.log('This is the user: ', req.user);
 	req.logout();
-	res.clearCookie("userid");
-	res.clearCookie("userFirstName");
-	res.clearCookie("userLastName");
-	res.clearCookie("userEmail");
-	res.clearCookie("userPhoneNumber");
-	res.clearCookie("userList");
-	res.json({success: true})
+	res.json({success: true});
 });
 
 
 //CREATE
 router.post("/addListItem", function(req, res){
-	console.log(req.body)
+	console.log('AddListItem req.body: ', req.body);
+	console.log('The user is: ', req.user);
+	// User.findById(req.user.id, function() {
+		
+	// })
+	res.send(req.body);
 	// console.log(User)
 });
 
