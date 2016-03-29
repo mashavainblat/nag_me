@@ -10,6 +10,19 @@ app.controller("BodyController", ["$http", "$scope", function($http, $scope){
 	this.user = {};
 	this.user.loggedIn = false;
 
+	$scope.$on("user-logged-in", function(eventObj, data){
+		self.user = data;
+		console.log(self.user)
+		console.log("data.firstName: ", data.firstName)
+		console.log("data.list: ", data.list)
+	})
+
+	$scope.$on("user-signed-up", function(eventObj, data){
+		self.user = data;
+		console.log(self.user)
+		console.log("data.firstName: ", data.firstName)
+	})
+
 	//make ajax request to server||users.js(controller)
 	//users.js(controller) makes request to mongo DB
 	//mongo DB accesses json data which feeds the UsersController

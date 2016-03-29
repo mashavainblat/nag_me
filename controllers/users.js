@@ -21,8 +21,11 @@ router.get("/json", function(req, res){
 router.post("/signup", passport.authenticate("local-signup", 
 	{failureRedirect: "/"}), 
 	function(req, res){
-		console.log(req.user)
-		res.json({success: true});
+		console.log("=======================================")
+		console.log("User is signed in as: ", req.user)
+		console.log("=======================================")
+		res.json(req.user);
+
 	}
 );
 
@@ -32,7 +35,9 @@ router.post("/signup", passport.authenticate("local-signup",
 router.post("/login", passport.authenticate("local-login", 
 	{failureMessage: "fail"}), 
 	function(req, res){
+		console.log("=======================================")
 		console.log('User is logged in as: ', req.user);
+		console.log("=======================================")
 		res.json(req.user)
 	}
 )
@@ -42,7 +47,9 @@ router.post("/login", passport.authenticate("local-login",
 // LOGOUT
 //================================
 router.get("/logout", function(req, res){
-	console.log('This is the user: ', req.user);
+	console.log("=======================================")
+	console.log('This is the logged out user: ', req.user);
+	console.log("=======================================")
 	req.logout();
 	res.json({success: true});
 });
@@ -50,16 +57,14 @@ router.get("/logout", function(req, res){
 
 //CREATE
 router.post("/addListItem", function(req, res){
-	console.log('AddListItem req.body: ', req.body);
-	console.log('The user is: ', req.user);
-	// User.findById(req.user.id, function() {
-		
-	// })
-	res.send(req.body);
-	// console.log(User)
+	User.findByIdAndUpdate(req.user.id, {$push: {list:req.body.list}}, {upsert:true}, function(error, data){
+		if(error){
+			console.log(error)
+		} else {
+			res.json(data)
+		}
+	})
 });
-
-
 
 //route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next){

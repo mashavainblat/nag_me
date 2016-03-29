@@ -1,5 +1,5 @@
 
-	<form ng-if="bodyCtrl.user.loggedIn != true" ng-submit="signupCtrl.signup()" ng-controller="SignupController as signupCtrl">
+	<form ng-submit="signupCtrl.signup()" ng-controller="SignupController as signupCtrl">
 		<h1>Sign Up</h1>
 		<input ng-model="signupCtrl.firstName" type="text" placeholder="First Name"/><br>
 		<input ng-model="signupCtrl.lastName" type="text" placeholder="Last Name"/><br>

@@ -13,7 +13,10 @@ app.controller("LoginController", ["$scope", "$http", function($scope, $http){
 			data: this
 		}).then(
 			function(response){
-				console.log(response)
+				// console.log(response.data)
+				self.user = response.data
+				console.log("the user is: ", self.user)
+				$scope.$emit("user-logged-in", self.user)
 			},
 			function(error){
 				console.log(error)
@@ -21,13 +24,5 @@ app.controller("LoginController", ["$scope", "$http", function($scope, $http){
 		)
 	}
 
-	$scope.$on("user-signed-up", function(eventObj, data){
-		self.user = data;
-	});
-
-	$scope.$on("user-logged-out", function(eventObj, data){
-		self.user = {};
-		self.user.loggedIn = false;
-	});
 
 }])

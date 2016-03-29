@@ -13,7 +13,6 @@ app.controller("HeaderController", ["$http", "$scope", function($http, $scope){
 		}).then(
 			function(response){
 				console.log('This is the response from the server: ', response);
-
 			},
 			function(error){
 				console.log(error)

@@ -23,8 +23,9 @@ app.controller("SignupController", ["$http", "$scope", function($http, $scope){
 		}).then(
 			//success
 			function(response){
-				console.log(response)
-				console.log(self)
+				self.user = response.data
+				console.log("the signed up user is: ", self.user)
+				$scope.$emit("user-signed-up", self.user)
 			},
 			//failure
 			function(error){
