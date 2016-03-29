@@ -1,2 +1,9 @@
 
 <h1>{{headerCtrl.testHeader}}</h1>
+<img src="img/n.png" style="width:30px">
+<form ng-submit="headerCtrl.addListItem()">
+	<input ng-model="headerCtrl.list" type="text" placeholder="Nag me about...">
+	<button>Add</button>
+</form>
+
+{{headerCtrl.user}}

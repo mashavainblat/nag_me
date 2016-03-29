@@ -19,6 +19,7 @@ app.controller("SignupController", ["$http", "$scope", "$cookies", function($htt
 			email: cookies.userEmail,
 			password: cookies.userPassword,
 			phoneNumber: cookies.userPhoneNumber,
+			list: cookies.userList,
 			loggedIn: true
 		};
 	};
@@ -46,13 +47,12 @@ app.controller("SignupController", ["$http", "$scope", "$cookies", function($htt
 					firstName: cookies.userFirstName,
 					lastName: cookies.userLastName,
 					email: cookies.userEmail,
-					phoneNumber: cookies.userPhoneNumber
+					phoneNumber: cookies.userPhoneNumber,
+					list: cookies.userList
 				};
 				if (cookies.userFirstName != null) {
 					self.user.loggedIn = true
 				};
-				$scope.$emit("user-signed-up", self.user);
-				console.log(self.user)
 			},
 			//failure
 			function(error){
@@ -60,5 +60,14 @@ app.controller("SignupController", ["$http", "$scope", "$cookies", function($htt
 			}
 		)//closes .then
 	}//closes .create()
+
+	$scope.$on("user-logged-in", function(eventObj, data){
+		self.user = data;
+	})
+
+	$scope.$on("user-logged-out", function(eventObj, data){
+		self.user = {};
+		self.user.loggedIn = false;
+	})
 
 }])
