@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
+var client = require("twilio")(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN)
 
 var User = require("../models/user.js");
 var List = require("../models/list.js");
@@ -69,6 +70,17 @@ router.post("/addListItem/", function(req, res){
 			newListItem.save(function(err, listData) {
 				user.list.push(listData);
 				user.save(function(err, updatedUser) {
+						client.sendMessage({
+							to: "+15162344611",
+							from: "+16313378288",
+							body: "http://www.google.com"
+						}, function(err, data){
+							if(err){
+								console.log("error: ", err);
+							} else {
+							console.log("data: ", data);
+							}
+						})
 					res.send(updatedUser);
 				});
 			});	

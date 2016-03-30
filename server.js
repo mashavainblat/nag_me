@@ -3,6 +3,7 @@ var app = express();
 var port = process.env.PORT || 3000;
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
+var client = require("twilio")(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN)
 
 var passport = require("passport");
 var session = require("express-session");
@@ -26,6 +27,21 @@ app.use(passport.session());
 //CONTROLLERS
 var usersController = require("./controllers/users.js");
 app.use("/users", usersController)
+
+app.get("/testtwilio", function(req, res){
+	client.sendMessage({
+		to: "+15162344611",
+		from: "+16313378288",
+		body: "Hello nagging you about stuff"
+	}, function(err, data){
+		if(err){
+			console.log("error: ", err);
+		} else {
+		console.log("data: ", data);
+		}
+	})
+})
+
 
 //INDEX
 app.get("/", function(req, res){
