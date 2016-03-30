@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var bcrypt   = require('bcrypt-nodejs');
+var List = require("./list.js");
 
 var userSchema = mongoose.Schema({
 	firstName: String,
@@ -7,7 +8,8 @@ var userSchema = mongoose.Schema({
 	email: {type: String, unique: true},
 	password: {type: String, required: true},
 	phoneNumber: {type: String, required: true},
-	list: {type: Array}
+	list: [List.schema],
+	created: {type: Date, default: Date.now}
 })
 
 // methods ======================

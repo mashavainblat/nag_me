@@ -1,7 +1,9 @@
 var express = require("express");
 var router = express.Router();
-var User = require("../models/user.js");
 var passport = require("passport");
+
+var User = require("../models/user.js");
+var List = require("../models/list.js");
 
 router.get("/json", function(req, res){
 	// console.log("users controller")
@@ -57,13 +59,55 @@ router.get("/logout", function(req, res){
 
 //CREATE
 router.post("/addListItem", function(req, res){
-	User.findByIdAndUpdate(req.user.id, {$push: {list:req.body.list}}, {upsert:true}, function(error, data){
-		if(error){
-			console.log(error)
-		} else {
-			res.json(data)
-		}
-	})
+	// List.create(req.body, function(error, list){
+
+		console.log('Req.body: ', req.body);
+
+		console.log(req.user.id);
+
+		User.findById(req.user.id, function(err, user) {
+
+			if (err) { 
+				console.log('The error is: ', err);
+				throw err; 
+			}
+
+			var newListItem = new List(req.body);
+
+			console.log('The new list item is: ', newListItem)
+
+			newListItem.save(function(err, listData) {
+				user.list.push(listData);
+				user.save(function(err, updatedUser) {
+					res.send(updatedUser);
+				});
+			});	
+		});
+
+		// console.log(list)
+		// User.findByIdAndUpdate(req.user.id, {$push: {list:req.body.list}}, {upsert: true}, function(error, data){
+		// // // User.findById(req.user.id, function(error, data){
+			
+		// // 	// console.log("=========================");
+		// // 	// console.log("new list item: ", newListItem)
+		// // 	console.log("=========================");
+		// // 	console.log("data: ", data);
+		// 	console.log("=========================");
+		// 	console.log("req.body: ", req.body);
+		// 	console.log("=========================");
+		// 	console.log("req.body.list: ", req.body.list);
+		// 	console.log("=========================");
+		// // 	// console.log("res.user: ", req.user);
+		// // 	// console.log("=========================");
+		// // 	// console.log("req.body.list: ", req.body.list);
+		// // 	// console.log("=========================");
+		// // 	if(error){
+		// // 		console.log(error)
+		// // 	} else {
+		// 		res.json(data)
+		// // 	}
+		// })
+	// })
 });
 
 //route middleware to make sure a user is logged in

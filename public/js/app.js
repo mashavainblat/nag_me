@@ -1,7 +1,7 @@
 (function(){
 
 
-var app = angular.module("NagMe", ["header-directive", "signup-directive", "login-directive", "list-directive", "logout-directive"]);
+var app = angular.module("NagMe", ["ngRoute", "header-directive", "signup-directive", "login-directive", "list-directive", "logout-directive"]);
 
 //need to access ajax service which is HTTP in angular
 app.controller("BodyController", ["$http", "$scope", function($http, $scope){
