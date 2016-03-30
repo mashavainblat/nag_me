@@ -12,16 +12,37 @@ app.controller("BodyController", ["$http", "$scope", function($http, $scope){
 
 	$scope.$on("user-logged-in", function(eventObj, data){
 		self.user = data;
-		console.log(self.user)
-		console.log("data.firstName: ", data.firstName)
-		console.log("data.list: ", data.list)
+		console.log("user-logged-in self.user: ", self.user)
 	})
 
 	$scope.$on("user-signed-up", function(eventObj, data){
 		self.user = data;
-		console.log(self.user)
-		console.log("data.firstName: ", data.firstName)
+		console.log("user-signed-up self.user: ", self.user)
 	})
+
+	$scope.$on("user-logged-out", function(eventObj, data){
+		self.user = data
+		self.user.loggedIn = false;
+		console.log("user-logged-out: ", self.user)
+	})
+
+	this.signupForm = true;
+	this.loginForm = false;
+	this.showSignUpForm = function(){
+		console.log("clicking Signup")
+		this.signupForm = false
+		this.loginForm = true
+	}
+
+	this.showLoginForm = function(){
+		console.log("clicking Login")
+		this.loginForm = true
+		this.signupForm = false
+	}
+	// this.displayForm = function(){
+	// 	this.signupForm = !this.signupForm;
+	// 	this.loginForm = !this.loginForm;
+	// }
 
 	//make ajax request to server||users.js(controller)
 	//users.js(controller) makes request to mongo DB

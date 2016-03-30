@@ -1,6 +1,5 @@
-	<form ng-submit="loginCtrl.login()">
-		<h1>Login</h1>
+	<form ng-if="bodyCtrl.user.loggedIn == false" ng-submit="loginCtrl.login()">
 		<input ng-model="loginCtrl.email" type="text" placeholder="Email"/><br>
 		<input ng-model="loginCtrl.password" type="password" placeholder="Password"/><br>
-		<button>Submit</button>
+		<button>Log In</button>
 	</form>

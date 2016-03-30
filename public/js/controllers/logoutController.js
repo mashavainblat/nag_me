@@ -11,7 +11,8 @@ app.controller("LogoutController", ["$http", "$scope", function($http, $scope){
 			function(response){
 				console.log(response)
 				self.user = {};
-				self.user.loggedIn = false;
+				// self.user.loggedIn = false;
+				$scope.$emit("user-logged-out", self.user)
 			},
 			function(error){
 				console.log(error)

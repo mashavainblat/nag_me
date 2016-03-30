@@ -23,6 +23,15 @@ header-directive button{
 header-directive button img{
 	width:10px;
 }
+
+
+/* SIGNUP / LOGIN */
+/******************************************/
+body h1.signupLogin{
+	display:inline;
+}
+
+
 /* FOOTER */
 /******************************************/
 footer{
