@@ -13,6 +13,7 @@ app.controller("HeaderController", ["$http", "$scope", "$routeParams", function(
 			function(response){
 				// console.log(list)
 				console.log('This is the response from the server: ', response);
+				$scope.$emit("new-list-item-added", response.data)
 			},
 			function(error){
 				console.log(error)
