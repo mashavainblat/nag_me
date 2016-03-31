@@ -1,9 +1,9 @@
 
+
 <!-- <p style="color:red">{{bodyCtrl.user}}</p> -->
 <!-- <p style="color:green">{{bodyCtrl.user.list}}</p> -->
 <ul ng-repeat="list in bodyCtrl.user.list">
-	<li>{{list._id}}</li>
-	{{list.listItem}}
+	<span class="listItem">{{list.listItem}}</span>
 
 	<button id="deleteListItemButton" ng-click="listCtrl.deleteItem($index, list.listItem, list._id)">Delete</button>
 </ul>

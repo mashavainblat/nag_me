@@ -33,8 +33,7 @@ header-directive button img{
 /* MAIN */
 /******************************************/
 main{
-	text-align:center;
-	padding: 0 5px;
+	/*text-align:center;*/
 }
 
 
@@ -64,6 +63,26 @@ main form button{
 	background-color:white;
 	border:solid 1px #000;
 	/*width:100%;*/
+
+}
+
+/* LIST */
+/******************************************/
+/*ul span.listItem{
+	padding:0px;
+}*/
+
+list-directive ul{
+	padding:0px;
+	border-top:solid .5px #ccc;
+}
+
+list-directive ul:last-child{
+	border-bottom:solid .5 #ccc;
+}
+
+list-directive button{
+	float:right;
 }
 
 
