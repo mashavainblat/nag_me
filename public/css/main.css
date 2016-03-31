@@ -1,19 +1,24 @@
+
 *{
 	margin:0px;
-}
-
-body{
-	position:relative;
 }
 
 /* HEADER */
 /******************************************/
 header{
 	background-color:skyblue;
+	padding:5px;
 }
+
+header img{
+	width:18px;
+	vertical-align: text-bottom;
+}
+
 header-directive img, header-directive form{
 	display:inline;
 }
+
 header-directive button{
 	background-color:rgba(255,255,255,0);
 	border:0;
@@ -22,6 +27,14 @@ header-directive button{
 
 header-directive button img{
 	width:10px;
+}
+
+
+/* MAIN */
+/******************************************/
+main{
+	text-align:center;
+	padding: 0 5px;
 }
 
 
@@ -36,6 +49,9 @@ body h1.signupLogin{
 /******************************************/
 footer{
 	background-color:skyblue;
+	bottom:0;
+	position:absolute;
+	width:100%;
 }
 
 logout-directive p, logout-directive button{
