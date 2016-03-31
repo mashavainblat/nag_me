@@ -40,8 +40,30 @@ main{
 
 /* SIGNUP / LOGIN */
 /******************************************/
-body h1.signupLogin{
+main h1.signupLogin{
 	display:inline;
+}
+
+main form{
+	width:200px;
+}
+
+main form * {
+	width:100%;
+	text-align: center;
+	padding: 5px;
+	margin:2.5px;
+}
+
+/*main form input{
+	text-align:center;
+	width:100%;
+}*/
+
+main form button{
+	background-color:white;
+	border:solid 1px #000;
+	/*width:100%;*/
 }
 
 
