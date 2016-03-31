@@ -7,8 +7,11 @@ var client = require("twilio")(process.env.TWILIO_ACCOUNT_SID, process.env.TWILI
 
 var passport = require("passport");
 var session = require("express-session");
+var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/nag-me';
 
-mongoose.connect("mongodb://localhost:27017/nagme")
+// mongoose.connect("mongodb://localhost:27017/nagme")
+mongoose.connect(mongoUri)
+
 
 //MIDDLEWARE
 
