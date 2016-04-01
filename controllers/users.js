@@ -72,10 +72,11 @@ router.post("/addListItem/", function(req, res){
 				user.save(function(err, updatedUser) {
 					console.log("updatedUser.phoneNumber: ", updatedUser.phoneNumber)
 					console.log("updatedUser: ", updatedUser)
+					console.log("newListItem.listItem: ", newListItem.listItem)
 					client.sendMessage({
-						to: "+15162344611",
+						to: "+1" + updatedUser.phoneNumber,
 						from: "+16313378288",
-						body: "http://www.google.com"
+						body: "https://www.google.com/?gws_rd=ssl#q=" + newListItem.listItem
 					}, function(err, data){
 						if(err){
 							console.log("error: ", err);
