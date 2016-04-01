@@ -28,8 +28,9 @@
 	</header>
 	
 	<main>
-		<h1 ng-click="bodyCtrl.showSignUpForm()" class="signupLogin">Signup</h1> <h1 class="signupLogin">|</h1> 
-		<h1 ng-click="bodyCtrl.showLoginForm()" class="signupLogin">Login</h1>
+		<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.showSignUpForm()" class="signupLogin">Signup</h1> 
+		<h1 ng-if="bodyCtrl.user.loggedIn == false" class="signupLogin">|</h1> 
+		<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.showLoginForm()" class="signupLogin">Login</h1>
 
 		<signup-directive ng-if="bodyCtrl.signupForm" ></signup-directive>
 		<login-directive ng-if="bodyCtrl.loginForm" ></login-directive>

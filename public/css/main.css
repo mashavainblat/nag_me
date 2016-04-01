@@ -3,6 +3,30 @@
 	margin:0px;
 }
 
+/* FONTS */
+/******************************************/
+@font-face{
+	font-family: "Titillium-Light";
+	src: url("./fonts/Titillium/TitilliumWeb-Light.ttf");
+}
+
+@font-face{
+	font-family: "Titillium-Regular";
+	src: url("./fonts/Titillium/TitilliumWeb-Regular.ttf");
+}
+
+@font-face{
+	font-family: "Titillium-SemiBold";
+	src: url("./fonts/Titillium/TitilliumWeb-SemiBold.ttf");
+}
+
+@font-face{
+	font-family: "Titillium-Bold";
+	src: url("./fonts/Titillium/TitilliumWeb-Bold.ttf");
+}
+
+
+
 /* HEADER */
 /******************************************/
 header{
@@ -29,6 +53,10 @@ header-directive button{
 	padding:0;
 }
 
+header-directive button:hover{
+	cursor:pointer;
+}
+
 header-directive button img{
 	width:13px;
 }
@@ -44,6 +72,7 @@ main{
 /* SIGNUP / LOGIN */
 /******************************************/
 main h1.signupLogin{
+	font-family: "Titillium-Light";
 	display:inline;
 }
 
@@ -83,10 +112,11 @@ main form button{
 list-directive ul{
 	padding:3px;
 	border-top:solid .5px #ccc;
+	font-family:"Titillium-Regular";
 }
 
 list-directive ul:last-child{
-	border-bottom:solid .5 #ccc;
+	border-bottom:solid .5px #ccc;
 }
 
 list-directive button{
@@ -96,19 +126,28 @@ list-directive button{
 	padding:0px;
 }
 
+list-directive button:hover{
+	cursor:pointer;
+}
+
 list-directive button img{
 	width:11px;
-	padding:3px;
+	padding:6px;
 }
 
 
 /* FOOTER */
 /******************************************/
 footer{
+	font-family:"Titillium-Regular";
 	background-color:skyblue;
 	bottom:0;
 	position:absolute;
 	width:100%;
+}
+
+footer p span{
+	font-family:"Titillium-Bold";
 }
 
 logout-directive p, logout-directive button{
@@ -116,6 +155,7 @@ logout-directive p, logout-directive button{
 }
 
 footer logout-directive button{
+	font-family:"Titillium-Regular";
 	border:0;
 	background-color:skyblue;
 }
@@ -126,4 +166,5 @@ footer logout-directive button:hover{
 
 logout-directive button{
 	float:right;
+	font-size:15px;
 }
