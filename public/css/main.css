@@ -15,6 +15,10 @@ header img{
 	vertical-align: text-bottom;
 }
 
+header-directive{
+	width:200px;
+}
+
 header-directive img, header-directive form{
 	display:inline;
 }
@@ -26,7 +30,7 @@ header-directive button{
 }
 
 header-directive button img{
-	width:10px;
+	width:13px;
 }
 
 
@@ -41,6 +45,10 @@ main{
 /******************************************/
 main h1.signupLogin{
 	display:inline;
+}
+
+main h1.signupLogin:hover{
+	cursor: pointer;
 }
 
 main form{
@@ -73,7 +81,7 @@ main form button{
 }*/
 
 list-directive ul{
-	padding:0px;
+	padding:3px;
 	border-top:solid .5px #ccc;
 }
 
@@ -83,6 +91,14 @@ list-directive ul:last-child{
 
 list-directive button{
 	float:right;
+	background-color:rgba(255, 255, 255, 0);
+	border:0px;
+	padding:0px;
+}
+
+list-directive button img{
+	width:11px;
+	padding:3px;
 }
 
 

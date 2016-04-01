@@ -70,17 +70,19 @@ router.post("/addListItem/", function(req, res){
 			newListItem.save(function(err, listData) {
 				user.list.push(listData);
 				user.save(function(err, updatedUser) {
-						// client.sendMessage({
-						// 	to: "+15162344611",
-						// 	from: "+16313378288",
-						// 	body: "http://www.google.com"
-						// }, function(err, data){
-						// 	if(err){
-						// 		console.log("error: ", err);
-						// 	} else {
-						// 	console.log("data: ", data);
-						// 	}
-						// })
+					console.log("updatedUser.phoneNumber: ", updatedUser.phoneNumber)
+					console.log("updatedUser: ", updatedUser)
+					client.sendMessage({
+						to: "+15162344611",
+						from: "+16313378288",
+						body: "http://www.google.com"
+					}, function(err, data){
+						if(err){
+							console.log("error: ", err);
+						} else {
+						// console.log("data: ", data);
+						}
+					})
 					res.send(updatedUser);
 				});
 			});	
