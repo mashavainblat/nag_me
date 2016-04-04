@@ -64,19 +64,27 @@ router.get("/done/:listId/:listItemName", function(req, res){
 	// User.findById(req.user.id, function(error, user){
 	List.findById(req.params.listId, function(error, data){
 		// console.log("data: ", data);
-		for (var i = 0; i<data.list.length; i++){		
-			if (data.list[i].id == req.params.listId){
-				// console.log("req.params.listId: ", req.params.listId);
-				// console.log("data.list[i].status: ", data.list[i].status)
-				data.list[i].status = "complete";
-				// console.log("data.list[i].status: ", data.list[i].status)
-				data.save(function(error, updatedData){
-					console.log("updatedData: ", updatedData)
-					res.redirect("https://www.google.com/?gws_rd=ssl#q=" + req.params.listItemName)
-					// res.json(updatedData)
-				})
-			}
+		console.log("data: ", data)		
+		if (data._id == req.params.listId){
+			console.log("req.params.listId: ", req.params.listId)
+			data.status = "complete"
+			data.save(function(error, updatedListItem){
+				res.redirect("https://www.google.com/?gws_rd=ssl#q=" + req.params.listItemName)
+			})
 		}
+		// for (var i = 0; i<data.list.length; i++){
+		// 	if (data.list[i].id == req.params.listId){
+		// 		// console.log("req.params.listId: ", req.params.listId);
+		// 		// console.log("data.list[i].status: ", data.list[i].status)
+		// 		data.list[i].status = "complete";
+		// 		// console.log("data.list[i].status: ", data.list[i].status)
+		// 		data.save(function(error, updatedData){
+		// 			console.log("updatedData: ", updatedData)
+		// 			res.redirect("https://www.google.com/?gws_rd=ssl#q=" + req.params.listItemName)
+		// 			// res.json(updatedData)
+		// 		})
+		// 	}
+		// }
 	})
 }); //ends router.put
 
@@ -93,8 +101,9 @@ router.get("/admin/nag/:listId/:listItemName", function(req, res){
 					client.sendMessage({
 						to: "+1" + updatedUser.phoneNumber,
 						from: "+16313378288",
+						// body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://localhost:3000/users/done/" + req.params.listId + "/" + req.params.listItemName
+						
 						body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://nag-me.herokuapp.com/users/done/" + req.params.listId + "/" + req.params.listItemName
-						// body: "https://www.google.com/?gws_rd=ssl#q=" + newListItem.listItem
 					}, function(err, data){
 						if(err){
 							console.log("error: ", err);
