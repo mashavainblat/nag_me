@@ -71,6 +71,7 @@ router.get("/done/:listId/:listItemName", function(req, res){
 				// console.log("user.list[i].status: ", user.list[i].status)
 				user.save(function(error, updatedUser){
 					// console.log(updatedUser)
+					res.redirect("https://www.google.com/?gws_rd=ssl#q=" + req.params.listItemName)
 					res.json(updatedUser)
 				})
 			}
