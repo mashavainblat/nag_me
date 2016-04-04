@@ -3,6 +3,19 @@
 	margin:0px;
 }
 
+.row, .col-md-3{
+	margin:0;
+}
+
+.container{
+	padding:0;
+}
+
+.fixedWidth{
+	width: 400px;
+	max-width:100%;
+}
+
 /* FONTS */
 /******************************************/
 @font-face{
@@ -27,10 +40,44 @@
 
 
 
+
+/* NAV */
+/******************************************/
+header, nav{
+	font-family:"Titillium-Regular";
+	background-color:rgba(192, 66, 63, 1);
+	width:100%;
+	color:white;
+}
+
+nav p span{
+	font-family:"Titillium-Bold";
+}
+
+logout-directive p, logout-directive button{
+	display:inline;
+}
+
+nav logout-directive button{
+	font-family:"Titillium-Regular";
+	border:0;
+	background-color:rgba(192, 66, 63, 1);
+}
+
+nav logout-directive button:hover{
+	cursor:pointer;
+}
+
+logout-directive button{
+	float:right;
+	font-size:15px;
+}
+
+
 /* HEADER */
 /******************************************/
 header{
-	background-color:skyblue;
+	background-color:rgba(192, 66, 63, 1);
 	padding:5px;
 }
 
@@ -51,6 +98,7 @@ header-directive button{
 	background-color:rgba(255,255,255,0);
 	border:0;
 	padding:0;
+	text-align:right;
 }
 
 header-directive button:hover{
@@ -113,6 +161,7 @@ list-directive ul{
 	padding:3px;
 	border-top:solid .5px #ccc;
 	font-family:"Titillium-Regular";
+	margin-bottom:0px;
 }
 
 list-directive ul:last-child{
@@ -132,37 +181,60 @@ list-directive button:hover{
 
 list-directive button img{
 	width:11px;
-	padding:6px;
 }
 
 
-/* FOOTER */
-/******************************************/
-nav{
-	font-family:"Titillium-Regular";
-	background-color:skyblue;
-	width:100%;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*MEDIA QUERIES*/
+/*********************************************/
+/*@media screen and (min-width:300px){
+	header form input{
+		width:85%;
+	}
+}*/
+
+/*@media screen and (min-width:320px){
+	header form input{
+		width:86%;
+	}
 }
 
-nav p span{
-	font-family:"Titillium-Bold";
+@media screen and (min-width:360px){
+	header form input{
+		width:87.8%;
+	}
 }
 
-logout-directive p, logout-directive button{
-	display:inline;
+@media screen and (min-width:400px){
+	header form input{
+		width:89.2%;
+	}
 }
 
-nav logout-directive button{
-	font-family:"Titillium-Regular";
-	border:0;
-	background-color:skyblue;
+@media screen and (min-width:460px){
+	header form input{
+		width:90.7%;
+	}
 }
 
-nav logout-directive button:hover{
-	cursor:pointer;
-}
-
-logout-directive button{
-	float:right;
-	font-size:15px;
-}
+@media screen and (min-width:5000px){
+	header form input{
+		width:91.5%;
+	}
+}*/

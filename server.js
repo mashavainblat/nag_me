@@ -5,12 +5,13 @@ var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 var client = require("twilio")(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN)
 
+
 var passport = require("passport");
 var session = require("express-session");
-var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/nag_me';
+// var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/nag_me';
 
-// mongoose.connect("mongodb://localhost:27017/nagme")
-mongoose.connect(mongoUri)
+mongoose.connect("mongodb://localhost:27017/nagme")
+// mongoose.connect(mongoUri)
 
 
 //MIDDLEWARE

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
 	<title>Nag Me</title>
+	<script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
 
@@ -20,25 +21,36 @@
 	<script src="js/login.js"></script>
 	<script src="js/list.js"></script>
 	<script src="js/logout.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body ng-controller="BodyController as bodyCtrl">
-	<nav>
-		<logout-directive></logout-directive>
+<body class="container" ng-controller="BodyController as bodyCtrl">
+	<nav class="row">
+		<div id="filler" class="col-xs-1 col-sm-4 col-xs-4"></div>
+		<logout-directive class="col-xs-10 col-sm-4 col-md-4"></logout-directive>
+		<div id="filler" class="col-xs-1 col-sm-4 col-xs-4"></div>
 	</nav>
-	<header>
-		<header-directive></header-directive>
+	<header class="row">
+		<div id="filler" class="col-xs-1 col-sm-4 col-xs-4"></div>
+		<header-directive class="col-xs-10 col-sm-4 col-md-4"></header-directive>
+		<div id="filler" class="col-xs-1 col-sm-4 col-xs-4"></div>
 	</header>
 	
-	<main>
-		<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.showSignUpForm()" class="signupLogin">Signup</h1> 
-		<h1 ng-if="bodyCtrl.user.loggedIn == false" class="signupLogin">|</h1> 
-		<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.showLoginForm()" class="signupLogin">Login</h1>
+	<main class="row">
+		<div id="filler" class="col-xs-1 col-sm-4 col-xs-4"></div>
+		<div  class="col-xs-10 col-sm-4 col-md-4">
+			<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.showSignUpForm()" class="signupLogin">Signup</h1> 
+			<h1 ng-if="bodyCtrl.user.loggedIn == false" class="signupLogin">|</h1> 
+			<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.showLoginForm()" class="signupLogin">Login</h1>
 
-		<signup-directive ng-if="bodyCtrl.signupForm" ></signup-directive>
-		<login-directive ng-if="bodyCtrl.loginForm" ></login-directive>
+			<signup-directive ng-if="bodyCtrl.signupForm" ></signup-directive>
+			<login-directive ng-if="bodyCtrl.loginForm" ></login-directive>
 
-		<list-directive></list-directive>
+			<list-directive></list-directive>
+		</div>
+		<div id="filler" class="col-xs-1 col-sm-4 col-xs-4"></div>
 	</main>
 
 </body>
