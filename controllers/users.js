@@ -70,9 +70,9 @@ router.get("/done/:listId/:listItemName", function(req, res){
 				user.list[i].status = "complete";
 				// console.log("user.list[i].status: ", user.list[i].status)
 				user.save(function(error, updatedUser){
-					// console.log(updatedUser)
+					console.log("updatedUser: ", updatedUser)
 					res.redirect("https://www.google.com/?gws_rd=ssl#q=" + req.params.listItemName)
-					res.json(updatedUser)
+					// res.json(updatedUser)
 				})
 			}
 		}
@@ -92,7 +92,7 @@ router.get("/admin/nag/:listId/:listItemName", function(req, res){
 					client.sendMessage({
 						to: "+1" + updatedUser.phoneNumber,
 						from: "+16313378288",
-						body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://nag-me.herokuapp.com/users/done/" + req.params.listId + "/" + req.params.listItemName
+						body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://localhost:3000/users/done/" + req.params.listId + "/" + req.params.listItemName
 						// body: "https://www.google.com/?gws_rd=ssl#q=" + newListItem.listItem
 					}, function(err, data){
 						if(err){
@@ -134,14 +134,6 @@ router.post("/addListItem/", isLoggedIn, function(req, res){
 				console.log('The error is: ', err);
 				throw err; 
 			}
-			console.log("==================================")
-			console.log("user: ", user)
-			console.log("==================================")
-			console.log("req.body.listItem: ", req.body.listItem)
-			console.log("==================================")
-			console.log("req.body.status: ", req.body.status)
-			console.log("==================================")
-			// var newListItem = new List(req.body);
 			var newListItem = new List({
 				listItem: req.body.listItem,
 				status: "active"
