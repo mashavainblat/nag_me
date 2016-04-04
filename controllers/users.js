@@ -91,7 +91,7 @@ router.get("/admin/nag/:listId/:listItemName", function(req, res){
 					client.sendMessage({
 						to: "+1" + updatedUser.phoneNumber,
 						from: "+16313378288",
-						body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://nag-me.herokuapp.com/users/admin/nag/" + req.params.listId + "/" + req.params.listItemName
+						body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://nag-me.herokuapp.com/users/done/" + req.params.listId + "/" + req.params.listItemName
 						// body: "https://www.google.com/?gws_rd=ssl#q=" + newListItem.listItem
 					}, function(err, data){
 						if(err){
