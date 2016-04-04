@@ -51,6 +51,9 @@ app.get("/", function(req, res){
 	res.send("Howdy")
 });
 
+app.get("/hi", function(req, res){
+	res.send("Hi")
+})
 
 mongoose.connection.once("open", function(){
 	console.log("connected to mongo")

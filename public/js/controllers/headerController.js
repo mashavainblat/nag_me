@@ -20,4 +20,4 @@ app.controller("HeaderController", ["$http", "$scope", "$routeParams", function(
 			}
 		)
 	}
-}])
+}]);

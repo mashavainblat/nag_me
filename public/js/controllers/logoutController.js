@@ -9,7 +9,7 @@ app.controller("LogoutController", ["$http", "$scope", function($http, $scope){
 	this.logout = function(){
 		$http.get("/users/logout").then(
 			function(response){
-				console.log(response)
+				// console.log(response)
 				self.user = {};
 				// self.user.loggedIn = false;
 				$scope.$emit("user-logged-out", self.user)
