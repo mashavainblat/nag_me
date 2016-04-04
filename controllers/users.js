@@ -61,18 +61,19 @@ router.get("/logout", function(req, res){
 router.get("/done/:listId/:listItemName", function(req, res){
 	// res.send("Done route will change status to 'complete'");
 	// console.log("The user is(req.user): ", req.user)
-	User.findById(req.user.id, function(error, user){
-		// console.log("user: ", user);
-		for (var i = 0; i<user.list.length; i++){		
-			if (user.list[i].id == req.params.listId){
+	// User.findById(req.user.id, function(error, user){
+	List.findById(req.params.listId, function(error, data){
+		// console.log("data: ", data);
+		for (var i = 0; i<data.list.length; i++){		
+			if (data.list[i].id == req.params.listId){
 				// console.log("req.params.listId: ", req.params.listId);
-				// console.log("user.list[i].status: ", user.list[i].status)
-				user.list[i].status = "complete";
-				// console.log("user.list[i].status: ", user.list[i].status)
-				user.save(function(error, updatedUser){
-					console.log("updatedUser: ", updatedUser)
+				// console.log("data.list[i].status: ", data.list[i].status)
+				data.list[i].status = "complete";
+				// console.log("data.list[i].status: ", data.list[i].status)
+				data.save(function(error, updatedData){
+					console.log("updatedData: ", updatedData)
 					res.redirect("https://www.google.com/?gws_rd=ssl#q=" + req.params.listItemName)
-					// res.json(updatedUser)
+					// res.json(updatedData)
 				})
 			}
 		}
