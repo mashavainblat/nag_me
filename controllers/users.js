@@ -107,6 +107,23 @@ router.get("/admin/nag/:listId/:listItemName", function(req, res){
 	})
 })
 
+router.get("/admin/reset-pending-status/:listId/:listItemName", function(req, res){
+	// res.send("Gotta nag about some stuff");
+	User.findById(req.user.id, function(error, user){
+		console.log("user: ", user);
+		console.log("user.phoneNumber: ", user.phoneNumber)
+		for (var i = 0; i<user.list.length; i++){		
+			if (user.list[i].id == req.params.listId){
+				user.list[i].status = "active";
+				user.save(function(error, updatedUser){
+					console.log("updatedUser: ", updatedUser)
+					res.json(updatedUser)
+				})
+			}
+		}
+	})
+})
+
 
 
 //CREATE
