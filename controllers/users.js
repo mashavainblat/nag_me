@@ -60,7 +60,7 @@ router.get("/logout", function(req, res){
 //changes listItem status to complete once user has clicked on link
 router.get("/done/:listId/:listItemName", function(req, res){
 	// res.send("Done route will change status to 'complete'");
-	console.log("The user is(req.user): ", req.user)
+	// console.log("The user is(req.user): ", req.user)
 	User.findById(req.user.id, function(error, user){
 		// console.log("user: ", user);
 		for (var i = 0; i<user.list.length; i++){		
@@ -81,13 +81,13 @@ router.get("/done/:listId/:listItemName", function(req, res){
 router.get("/admin/nag/:listId/:listItemName", function(req, res){
 	// res.send("Gotta nag about some stuff");
 	User.findById(req.user.id, function(error, user){
-		console.log("user: ", user);
-		console.log("user.phoneNumber: ", user.phoneNumber)
+		// console.log("user: ", user);
+		// console.log("user.phoneNumber: ", user.phoneNumber)
 		for (var i = 0; i<user.list.length; i++){		
 			if (user.list[i].id == req.params.listId){
 				user.list[i].status = "pending";
 				user.save(function(error, updatedUser){
-					console.log("updatedUser: ", updatedUser)
+					// console.log("updatedUser: ", updatedUser)
 					client.sendMessage({
 						to: "+1" + updatedUser.phoneNumber,
 						from: "+16313378288",
@@ -110,8 +110,8 @@ router.get("/admin/nag/:listId/:listItemName", function(req, res){
 router.get("/admin/reset-pending-status/:listId/:listItemName", function(req, res){
 	// res.send("Gotta nag about some stuff");
 	User.findById(req.user.id, function(error, user){
-		console.log("user: ", user);
-		console.log("user.phoneNumber: ", user.phoneNumber)
+		// console.log("user: ", user);
+		// console.log("user.phoneNumber: ", user.phoneNumber)
 		for (var i = 0; i<user.list.length; i++){		
 			if (user.list[i].id == req.params.listId){
 				user.list[i].status = "active";
@@ -133,9 +133,13 @@ router.post("/addListItem/", isLoggedIn, function(req, res){
 				console.log('The error is: ', err);
 				throw err; 
 			}
+			console.log("==================================")
 			console.log("user: ", user)
+			console.log("==================================")
 			console.log("req.body.listItem: ", req.body.listItem)
+			console.log("==================================")
 			console.log("req.body.status: ", req.body.status)
+			console.log("==================================")
 			// var newListItem = new List(req.body);
 			var newListItem = new List({
 				listItem: req.body.listItem,
@@ -143,7 +147,6 @@ router.post("/addListItem/", isLoggedIn, function(req, res){
 			})
 
 			console.log("newListItem: ", newListItem)
-			// res.json(user)
 			newListItem.save(function(err, listData) {
 				// console.log("listData: ", listData)
 				user.list.push(listData);
