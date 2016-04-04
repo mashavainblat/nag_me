@@ -23,6 +23,9 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body ng-controller="BodyController as bodyCtrl">
+	<nav>
+		<logout-directive></logout-directive>
+	</nav>
 	<header>
 		<header-directive></header-directive>
 	</header>
@@ -38,9 +41,5 @@
 		<list-directive></list-directive>
 	</main>
 
-	<footer>
-		<h3 ng-if="bodyCtrl.user.loggedIn == false">Nag me</h3>
-		<logout-directive></logout-directive>
-	</footer>
 </body>
 </html>

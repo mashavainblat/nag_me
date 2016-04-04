@@ -57,31 +57,56 @@ router.get("/logout", function(req, res){
 	res.json({success: true});
 });
 
+//changes listItem status to complete once user has clicked on link
+router.get("/done/:listId/:listItemName", function(req, res){
+	// res.send("Done route will change status to 'complete'");
+	console.log("The user is(req.user): ", req.user)
+	User.findById(req.user.id, function(error, user){
+		// console.log("user: ", user);
+		for (var i = 0; i<user.list.length; i++){		
+			if (user.list[i].id == req.params.listId){
+				// console.log("req.params.listId: ", req.params.listId);
+				// console.log("user.list[i].status: ", user.list[i].status)
+				user.list[i].status = "complete";
+				// console.log("user.list[i].status: ", user.list[i].status)
+				user.save(function(error, updatedUser){
+					// console.log(updatedUser)
+					res.json(updatedUser)
+				})
+			}
+		}
+	})
+}); //ends router.put
 
-// router.get("/admin/nag", function(req, res){
-// 	res.send("testing")
-// 	console.log("testing")
-// 	User.findById(req.user.id, function(error, user){
-// 		console.log("user: ", user)
-// 	})
-// })
-
-// test id: 56fc23b9fcb8b94f066011e8
-// test listId: 570282764c474599045fcc04
-// test listItemName: tank
-
-router.put("/done/:listId/:listItemName", function(req, res){
-	res.send("Done route will change status to complete")
-	console.log("req.user: ", req.user)
-
-	User.findByIdAndUpdate(req.params.listId, 
-		{"$set": {"status.$": "complete"}},
-		function(error, user){
-			console.log("user: ", user)
-			console.log("user.status: ", user.status)
-			res.json(user)
-		})
+router.get("/admin/nag/:listId/:listItemName", function(req, res){
+	// res.send("Gotta nag about some stuff");
+	User.findById(req.user.id, function(error, user){
+		console.log("user: ", user);
+		console.log("user.phoneNumber: ", user.phoneNumber)
+		for (var i = 0; i<user.list.length; i++){		
+			if (user.list[i].id == req.params.listId){
+				user.list[i].status = "pending";
+				user.save(function(error, updatedUser){
+					console.log("updatedUser: ", updatedUser)
+					client.sendMessage({
+						to: "+1" + updatedUser.phoneNumber,
+						from: "+16313378288",
+						body: "Hey, you wanted to be nagged about..."
+						// body: "https://www.google.com/?gws_rd=ssl#q=" + newListItem.listItem
+					}, function(err, data){
+						if(err){
+							console.log("error: ", err);
+						} else {
+						// console.log("data: ", data);
+						}
+					})
+					res.json(updatedUser)
+				})
+			}
+		}
+	})
 })
+
 
 
 //CREATE
@@ -121,10 +146,6 @@ router.post("/addListItem/", isLoggedIn, function(req, res){
 						// 	}
 						// })
 					res.json(updatedUser);
-					console.log("=======================");
-					console.log("redirecting to new route");
-					console.log("=======================");
-					// res.redirect("/admin/nag")
 				}); //ends user.save
 			});	//ends newListItem.save
 		}); //ends User.findById

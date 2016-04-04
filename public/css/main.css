@@ -138,15 +138,13 @@ list-directive button img{
 
 /* FOOTER */
 /******************************************/
-footer{
+nav{
 	font-family:"Titillium-Regular";
 	background-color:skyblue;
-	bottom:0;
-	position:absolute;
 	width:100%;
 }
 
-footer p span{
+nav p span{
 	font-family:"Titillium-Bold";
 }
 
@@ -154,13 +152,13 @@ logout-directive p, logout-directive button{
 	display:inline;
 }
 
-footer logout-directive button{
+nav logout-directive button{
 	font-family:"Titillium-Regular";
 	border:0;
 	background-color:skyblue;
 }
 
-footer logout-directive button:hover{
+nav logout-directive button:hover{
 	cursor:pointer;
 }
 

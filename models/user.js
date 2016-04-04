@@ -9,7 +9,8 @@ var userSchema = mongoose.Schema({
 	password: {type: String, required: true},
 	phoneNumber: {type: Number, required: true},
 	list: [List.schema],
-	created: {type: Date, default: Date.now}
+	created: {type: Date, default: Date.now},
+	isAdmin: {type: Boolean, default: false}
 })
 
 // methods ======================
