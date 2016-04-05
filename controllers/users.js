@@ -109,9 +109,9 @@ router.get("/admin/nag/:listId/:listItemName", function(req, res){
 					client.sendMessage({
 						to: "+1" + updatedUser.phoneNumber,
 						from: "+16313378288",
-						body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://localhost:3000/users/done/" + req.params.listId + "/" + listItemName
+						// body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://localhost:3000/users/done/" + req.params.listId + "/" + listItemName
 						
-						// body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://nag-me.herokuapp.com/users/done/" + req.params.listId + "/" + req.params.listItemName
+						body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://nag-me.herokuapp.com/users/done/" + req.params.listId + "/" + req.params.listItemName
 					}, function(err, data){
 						if(err){
 							console.log("error: ", err);
