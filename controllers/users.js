@@ -62,6 +62,11 @@ router.get("/done/:listId/:listItemName", function(req, res){
 	// res.send("Done route will change status to 'complete'");
 	// console.log("The user is(req.user): ", req.user)
 	// User.findById(req.user.id, function(error, user){
+	var listItemName = req.params.listItemName
+	console.log("listItemName: ", listItemName)
+	var listItemName = listItemName.replace(/ /g, "+")
+	console.log("listItemName: ", listItemName)
+
 	List.findById(req.params.listId, function(error, data){
 		// console.log("data: ", data);
 		console.log("data: ", data)		
@@ -69,7 +74,7 @@ router.get("/done/:listId/:listItemName", function(req, res){
 			console.log("req.params.listId: ", req.params.listId)
 			data.status = "complete"
 			data.save(function(error, updatedListItem){
-				res.redirect("https://www.google.com/?gws_rd=ssl#q=" + req.params.listItemName)
+				res.redirect("https://www.google.com/?gws_rd=ssl#q=" + listItemName)
 			})
 		}
 		// for (var i = 0; i<data.list.length; i++){
@@ -88,37 +93,71 @@ router.get("/done/:listId/:listItemName", function(req, res){
 	})
 }); //ends router.put
 
-router.get("/admin/nag/:listId/:listItemName", function(req, res){
-	// res.send("Gotta nag about some stuff");
-	User.findById(req.user.id, function(error, user){
-		// console.log("user: ", user);
-		// console.log("user.phoneNumber: ", user.phoneNumber)
-		for (var i = 0; i<user.list.length; i++){		
-			if (user.list[i].id == req.params.listId){
-				user.list[i].status = "pending";
-				user.save(function(error, updatedUser){
-					// console.log("updatedUser: ", updatedUser)
+router.get("/admin/nag/", function(req, res){
+	
+	var listItemName = req.params.listItemName
+
+	List.find({status: "active"}, function(error, listData){
+		// console.log("listData: ", listData)
+		for(var i = 0; i<1; i++){
+			if(listData[i].status == "active"){
+
+				// console.log("listData["+i+"]: ", listData[i])
+				listData[i].status = "pending";
+				// console.log(listData[i].status)
+
+				listData[i].save(function(error, updatedList){
+					// console.log("updatedList: ", updatedList)
 					client.sendMessage({
-						to: "+1" + updatedUser.phoneNumber,
+						to: "+15162344611",
 						from: "+16313378288",
-						// body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://localhost:3000/users/done/" + req.params.listId + "/" + req.params.listItemName
+						body: "Hey, you wanted to be nagged about " + listData.listItem + ". http://localhost:3000/users/done/" + listData._id + "/" + listData.listItem
 						
-						body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://nag-me.herokuapp.com/users/done/" + req.params.listId + "/" + req.params.listItemName
+						// body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://nag-me.herokuapp.com/users/done/" + req.params.listId + "/" + req.params.listItemName
 					}, function(err, data){
 						if(err){
-							console.log("error: ", err);
+							// console.log("error: ", err);
 						} else {
 						// console.log("data: ", data);
 						}
 					})
-					res.json(updatedUser)
+					res.json(updatedList)
 				})
 			}
 		}
 	})
+	// User.findById(req.user.id, function(error, user){
+	// 	// console.log("user: ", user);
+	// 	// console.log("user.phoneNumber: ", user.phoneNumber)
+	// 	for (var i = 0; i<user.list.length; i++){		
+	// 		if (user.list[i].id == req.params.listId){
+	// 			user.list[i].status = "pending";
+	// 			user.save(function(error, updatedUser){
+	// 				// console.log("updatedUser: ", updatedUser)
+
+	// 				client.sendMessage({
+	// 					to: "+1" + updatedUser.phoneNumber,
+	// 					from: "+16313378288",
+	// 					body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://localhost:3000/users/done/" + req.params.listId + "/" + listItemName
+						
+	// 					// body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://nag-me.herokuapp.com/users/done/" + req.params.listId + "/" + req.params.listItemName
+	// 				}, function(err, data){
+	// 					if(err){
+	// 						console.log("error: ", err);
+	// 					} else {
+	// 					// console.log("data: ", data);
+	// 					}
+	// 				})
+	// 				res.json(updatedUser)
+	// 			})
+	// 		}
+	// 	}
+	// })
 })
 
-router.get("/admin/reset-pending-status/:listId/:listItemName", function(req, res){
+// url param key?
+
+router.get("/admin/reset-pending-status", function(req, res){
 	// res.send("Gotta nag about some stuff");
 	User.findById(req.user.id, function(error, user){
 		// console.log("user: ", user);
