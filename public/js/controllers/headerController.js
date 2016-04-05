@@ -14,6 +14,7 @@ app.controller("HeaderController", ["$http", "$scope", "$routeParams", function(
 				// console.log(list)
 				console.log('This is the response from the server: ', response);
 				$scope.$emit("new-list-item-added", response.data)
+				self.listItem = "";
 			},
 			function(error){
 				console.log(error)

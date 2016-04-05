@@ -47,10 +47,11 @@ header, nav{
 	font-family:"Titillium-Regular";
 	background-color:rgba(192, 66, 63, 1);
 	width:100%;
-	color:white;
 }
 
-
+nav{
+	color:white;
+}
 
 nav p span{
 	font-family:"Titillium-Bold";

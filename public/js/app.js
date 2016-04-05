@@ -37,21 +37,21 @@ app.controller("BodyController", ["$http", "$scope", function($http, $scope){
 
 	this.signupForm = true;
 	this.loginForm = false;
-	this.showSignUpForm = function(){
-		console.log("clicking Signup")
-		this.signupForm = false
-		this.loginForm = true
-	}
-
-	this.showLoginForm = function(){
-		console.log("clicking Login")
-		this.loginForm = true
-		this.signupForm = false
-	}
-	// this.displayForm = function(){
-	// 	this.signupForm = !this.signupForm;
-	// 	this.loginForm = !this.loginForm;
+	// this.showSignUpForm = function(){
+	// 	console.log("clicking Signup")
+	// 	this.signupForm = false
+	// 	this.loginForm = true
 	// }
+
+	// this.showLoginForm = function(){
+	// 	console.log("clicking Login")
+	// 	this.loginForm = true
+	// 	this.signupForm = false
+	// }
+	this.displayForm = function(){
+		this.signupForm = !this.signupForm;
+		this.loginForm = !this.loginForm;
+	}
 
 	//make ajax request to server||users.js(controller)
 	//users.js(controller) makes request to mongo DB

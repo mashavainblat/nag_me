@@ -17,6 +17,8 @@ app.controller("LoginController", ["$scope", "$http", function($scope, $http){
 				self.user = response.data
 				// console.log("the user is: ", self.user)
 				$scope.$emit("user-logged-in", self.user)
+				self.email = "";
+				self.password = "";
 			},
 			function(error){
 				console.log(error)
