@@ -93,62 +93,62 @@ router.get("/done/:listId/:listItemName", function(req, res){
 	})
 }); //ends router.put
 
-router.get("/admin/nag/", function(req, res){
+router.get("/admin/nag/:listId/:listItemName", function(req, res){
 	
 	var listItemName = req.params.listItemName
 
-	List.find({status: "active"}, function(error, listData){
-		// console.log("listData: ", listData)
-		for(var i = 0; i<1; i++){
-			if(listData[i].status == "active"){
+	User.findById(req.user.id, function(error, user){
+		// console.log("user: ", user);
+		// console.log("user.phoneNumber: ", user.phoneNumber)
+		for (var i = 0; i<user.list.length; i++){		
+			if (user.list[i].id == req.params.listId){
+				user.list[i].status = "pending";
+				user.save(function(error, updatedUser){
+					// console.log("updatedUser: ", updatedUser)
 
-				// console.log("listData["+i+"]: ", listData[i])
-				listData[i].status = "pending";
-				// console.log(listData[i].status)
-
-				listData[i].save(function(error, updatedList){
-					// console.log("updatedList: ", updatedList)
 					client.sendMessage({
-						to: "+15162344611",
+						to: "+1" + updatedUser.phoneNumber,
 						from: "+16313378288",
-						body: "Hey, you wanted to be nagged about " + listData.listItem + ". http://localhost:3000/users/done/" + listData._id + "/" + listData.listItem
+						body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://localhost:3000/users/done/" + req.params.listId + "/" + listItemName
 						
 						// body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://nag-me.herokuapp.com/users/done/" + req.params.listId + "/" + req.params.listItemName
 					}, function(err, data){
 						if(err){
-							// console.log("error: ", err);
+							console.log("error: ", err);
 						} else {
 						// console.log("data: ", data);
 						}
 					})
-					res.json(updatedList)
+					res.json(updatedUser)
 				})
 			}
 		}
 	})
-	// User.findById(req.user.id, function(error, user){
-	// 	// console.log("user: ", user);
-	// 	// console.log("user.phoneNumber: ", user.phoneNumber)
-	// 	for (var i = 0; i<user.list.length; i++){		
-	// 		if (user.list[i].id == req.params.listId){
-	// 			user.list[i].status = "pending";
-	// 			user.save(function(error, updatedUser){
-	// 				// console.log("updatedUser: ", updatedUser)
+	// List.find({status: "active"}, function(error, listData){
+	// 	// console.log("listData: ", listData)
+	// 	for(var i = 0; i<1; i++){
+	// 		if(listData[i].status == "active"){
 
+	// 			// console.log("listData["+i+"]: ", listData[i])
+	// 			listData[i].status = "pending";
+	// 			// console.log(listData[i].status)
+
+	// 			listData[i].save(function(error, updatedList){
+	// 				// console.log("updatedList: ", updatedList)
 	// 				client.sendMessage({
-	// 					to: "+1" + updatedUser.phoneNumber,
+	// 					to: "+15162344611",
 	// 					from: "+16313378288",
-	// 					body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://localhost:3000/users/done/" + req.params.listId + "/" + listItemName
+	// 					body: "Hey, you wanted to be nagged about " + listData[i].listItem + ". http://localhost:3000/users/done/" + listData[i]._id + "/" + listData[i].listItem
 						
 	// 					// body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://nag-me.herokuapp.com/users/done/" + req.params.listId + "/" + req.params.listItemName
 	// 				}, function(err, data){
 	// 					if(err){
-	// 						console.log("error: ", err);
+	// 						// console.log("error: ", err);
 	// 					} else {
 	// 					// console.log("data: ", data);
 	// 					}
 	// 				})
-	// 				res.json(updatedUser)
+	// 				res.json(updatedList)
 	// 			})
 	// 		}
 	// 	}
