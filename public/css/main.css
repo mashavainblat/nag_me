@@ -137,9 +137,6 @@ main form{
 
 main form * {
 	width:100%;
-	text-align: center;
-	padding: 5px;
-	margin:2.5px;
 }
 
 /*main form input{

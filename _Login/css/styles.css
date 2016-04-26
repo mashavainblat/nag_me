@@ -17,7 +17,7 @@ body#sva-login {
 	font-family: "museo-sans", sans-serif, 300, 500, 700;
 }
 
-#sva-login #loginContainer {
+#sva-login #contentContainer{
 	height: 415px;
     width: 310px;
     background: white;
@@ -32,7 +32,7 @@ body#sva-login {
 }
 
 
-#sva-login #signContainer {
+#sva-login #headlines {
     margin-top: 2px;
 
     margin-left: 28px;
@@ -41,12 +41,12 @@ body#sva-login {
 }
 
 
-#sva-login #signContainer h1 {
+#sva-login #headlines h1 {
 	font-size: 50px;
 	margin-top: 13px;
 }
 
-#sva-login #barContainer {
+#sva-login #header {
 	background-color: #3aa6c2;
 	height: 85px;
 	box-shadow: 1px 0px 3px #838383;

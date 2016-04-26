@@ -24,29 +24,37 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-	<!-- <link rel="stylesheet" type="text/css" href="css/styles.css"> -->
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
+<body class="container" ng-controller="BodyController as bodyCtrl">
+	<nav class="row">
+		<div id="filler" class="  "></div>
+		<logout-directive class="  "></logout-directive>
+		<div id="filler" class="  "></div>
+	</nav>
+	<header class="row">
+		<div id="filler" class="  "></div>
+		<header-directive class="  "></header-directive>
+		<div id="filler" class="  "></div>
+	</header>
+	
+	<main class="row">
+		<div id="filler" class="  "></div>
+		<div  class="  ">
+<!-- 			<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.displayForm()" class="signupLogin">Signup</h1> 
+			<h1 ng-if="bodyCtrl.user.loggedIn == false" class="signupLogin">|</h1> 
+			<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.displayForm()" class="signupLogin">Login</h1> -->
 
-<body ng-controller="BodyController as bodyCtrl">
-	<div class="container">
-		
-		<div id="contentContainer">
-			<div id="accountHeader">
-				<div id="headlines">
-					<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.displayForm()" class="signupLogin">Sign Up</h1>
-					<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.displayForm()" class="signupLogin">|</h1>
-					<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.displayForm()" class="signupLogin">Login</h1>
-				</div>
-			</div> <!-- end of #accountHeader -->
+
+
 
 			<signup-directive ng-if="bodyCtrl.signupForm" ></signup-directive>
 			<login-directive ng-if="bodyCtrl.loginForm" ></login-directive>
 
-		</div> <!-- end of #contentContainer -->
-	</div>
+			<list-directive></list-directive>
+		</div>
+		<div id="filler" class="  "></div>
+	</main>
 
 </body>
-
-
 </html>
