@@ -32,7 +32,7 @@
 		<logout-directive class="  "></logout-directive>
 		<div id="filler" class="  "></div>
 	</nav>
-	<header class="row">
+	<header class="row" ng-if="bodyCtrl.user.loggedIn == true">
 		<div id="filler" class="  "></div>
 		<header-directive class="  "></header-directive>
 		<div id="filler" class="  "></div>
@@ -41,9 +41,9 @@
 	<main class="row">
 		<div id="filler" class="  "></div>
 		<div  class="  ">
-<!-- 			<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.displayForm()" class="signupLogin">Signup</h1> 
+			<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.displayForm()" class="signupLogin">Signup</h1> 
 			<h1 ng-if="bodyCtrl.user.loggedIn == false" class="signupLogin">|</h1> 
-			<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.displayForm()" class="signupLogin">Login</h1> -->
+			<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.displayForm()" class="signupLogin">Login</h1>
 
 
 

@@ -1,5 +1,11 @@
-body #contentContainer{
+
+
+
+/* LOGIN/ SIGNUP FORM */
+/****************************************/
+body #loginContentContainer, body #contentContainer{
 	background:beige;
+	width:295px;
 
 	position:fixed;
 	top:40%;
@@ -21,7 +27,7 @@ body #headlines h1 {
 	margin-top: 13px;
 }
 
-body #accountHeader{
+body #header{
 	background-color:rgba(192, 66, 63, 1);
 	height: 85px;
 	box-shadow: 1px 0px 3px #838383;
@@ -54,4 +60,18 @@ body #formContainer button{
 	border:none;
 	width:235px;
 	height:25px;
+}
+
+
+/* MAIN LIST */
+/******************************************/
+
+
+
+
+
+/* FOOTER */
+/******************************************/
+footer{
+	background-color:rgba(192, 66, 63, 1);
 }
