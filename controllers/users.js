@@ -25,8 +25,22 @@ router.post("/signup", passport.authenticate("local-signup",
 	{failureRedirect: "/"}), 
 	function(req, res){
 		// console.log("=======================================")
-		// console.log("User is signed in as: ", req.user)
+		console.log("User phoneNumber: ", req.user.phoneNumber)
 		// console.log("=======================================")
+		client.sendMessage({
+			to: "+1" + req.user.phoneNumber,
+			from: "+16313378288",
+			body: "Hello " + req.user.firstName + ". Thank you for signing up. Please tell us what you would like to be nagged about."
+			//body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://localhost:3000/users/done/" + req.params.listId + "/" + listItemName
+			
+			// body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://nag-me.herokuapp.com/users/done/" + req.params.listId + "/" + req.params.listItemName
+		}, function(err, data){
+			if(err){
+				console.log("error: ", err);
+			} else {
+			// console.log("data: ", data);
+			}
+		})
 		res.json(req.user);
 
 	}
@@ -93,6 +107,7 @@ router.get("/done/:listId/:listItemName", function(req, res){
 	})
 }); //ends router.put
 
+
 router.get("/admin/nag/:listId/:listItemName", function(req, res){
 	
 	var listItemName = req.params.listItemName
@@ -109,9 +124,9 @@ router.get("/admin/nag/:listId/:listItemName", function(req, res){
 					client.sendMessage({
 						to: "+1" + updatedUser.phoneNumber,
 						from: "+16313378288",
-						// body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://localhost:3000/users/done/" + req.params.listId + "/" + listItemName
+						body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://localhost:3000/users/done/" + req.params.listId + "/" + listItemName
 						
-						body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://nag-me.herokuapp.com/users/done/" + req.params.listId + "/" + req.params.listItemName
+						// body: "Hey, you wanted to be nagged about " + req.params.listItemName + ". http://nag-me.herokuapp.com/users/done/" + req.params.listId + "/" + req.params.listItemName
 					}, function(err, data){
 						if(err){
 							console.log("error: ", err);
