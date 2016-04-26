@@ -29,9 +29,14 @@
 </head>
 
 <body ng-controller="BodyController as bodyCtrl">
+	
+<div id="backgroundImages">
+	<img class="backgroundImage" id="alarmClock" src="img/annoying/alarmClock.gif">
+</div> <!-- end of #backgroundImages -->
+
 	<div class="container">
 		
-		<div id="loginContentContainer">
+		<div id="loginContentContainer" ng-if="bodyCtrl.user.loggedIn == false">
 			<div id="header" ng-if="bodyCtrl.user.loggedIn == false" >
 				<div id="headlines">
 					<h1 ng-if="bodyCtrl.user.loggedIn == false" ng-click="bodyCtrl.displayForm()" class="signupLogin">Sign Up</h1>
@@ -45,8 +50,8 @@
 
 		</div> <!-- end of #loginContentContainer -->
 		
-		<div id="contentContainer">
-			<div id="header" ng-if="bodyCtrl.user.firstName">
+		<div id="contentContainer" ng-if="bodyCtrl.user.firstName">
+			<div id="header">
 				<header-directive></header-directive>
 			</div>
 			<main id="list">
@@ -55,8 +60,9 @@
 			<footer>
 				<logout-directive></logout-directive>
 			</footer>
-		</div>
-	</div>
+		</div> <!-- end of #contentContainer -->
+
+	</div> <!-- end of .container -->
 
 </body>
 
