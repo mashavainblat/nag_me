@@ -1,9 +1,20 @@
-
+<div id="formContainer">
 	<form ng-if="bodyCtrl.user.loggedIn == false" ng-submit="signupCtrl.signup()" ng-controller="SignupController as signupCtrl">
-		<input ng-model="signupCtrl.firstName" type="text" placeholder="First Name"/><br>
-		<input ng-model="signupCtrl.lastName" type="text" placeholder="Last Name"/><br>
-		<input ng-model="signupCtrl.email" type="text" placeholder="Email"/><br>
-		<input ng-model="signupCtrl.password" type="password" placeholder="Password"/><br>
-		<input ng-model="signupCtrl.phoneNumber" type="text" placeholder="Phone Number"/><br>
+		<div class="formLabel">First Name</div>
+		<input ng-model="signupCtrl.firstName" type="text" placeholder=""/><br>
+		
+<!-- 		<div class="formLabel">Last Name</div>
+		<input ng-model="signupCtrl.lastName" type="text" placeholder=" "/><br> -->
+		
+		<div class="formLabel">Email</div>
+		<input ng-model="signupCtrl.email" type="text" placeholder=""/><br>
+		
+		<div class="formLabel">Password</div>
+		<input ng-model="signupCtrl.password" type="password" placeholder=""/><br>
+		
+		<div class="formLabel">Phone Number</div>
+		<input ng-model="signupCtrl.phoneNumber" type="text" placeholder="1XXXXXXXXXX"/><br>
+		
 		<button>Sign Up</button>
 	</form>
+</div>

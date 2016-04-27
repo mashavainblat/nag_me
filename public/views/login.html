@@ -1,5 +1,10 @@
+<div id="formContainer">
 	<form ng-if="bodyCtrl.user.loggedIn == false" ng-submit="loginCtrl.login()">
-		<input ng-model="loginCtrl.email" type="text" placeholder="Email"/><br>
-		<input ng-model="loginCtrl.password" type="password" placeholder="Password"/><br>
+		<div class="formLabel">Email</div>
+		<input ng-model="loginCtrl.email" type="text" placeholder=""/><br>
+		
+		<div class="formLabel">Password</div>
+		<input ng-model="loginCtrl.password" type="password" placeholder=""/><br>
 		<button>Log In</button>
 	</form>
+</div>

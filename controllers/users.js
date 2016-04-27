@@ -210,18 +210,18 @@ router.post("/addListItem/", isLoggedIn, function(req, res){
 				user.save(function(err, updatedUser) {
 					// console.log("updatedUser.phoneNumber: ", updatedUser.phoneNumber)
 					// console.log("updatedUser: ", updatedUser)
-					// console.log("newListItem.listItem: ", newListItem.listItem)
-						// client.sendMessage({
-						// 	to: "+1" + updatedUser.phoneNumber,
-						// 	from: "+16313378288",
-						// 	body: "https://www.google.com/?gws_rd=ssl#q=" + newListItem.listItem
-						// }, function(err, data){
-						// 	if(err){
-						// 		console.log("error: ", err);
-						// 	} else {
-						// 	// console.log("data: ", data);
-						// 	}
-						// })
+					console.log("newListItem.listItem: ", newListItem.listItem)
+						client.sendMessage({
+							to: "+1" + updatedUser.phoneNumber,
+							from: "+16313378288",
+							body: "https://www.google.com/?gws_rd=ssl#q=" + newListItem.listItem
+						}, function(err, data){
+							if(err){
+								console.log("error: ", err);
+							} else {
+							// console.log("data: ", data);
+							}
+						})
 					res.json(updatedUser);
 				}); //ends user.save
 			});	//ends newListItem.save
