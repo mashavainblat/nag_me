@@ -195,10 +195,3 @@ footer{
 	0% {left:-100px; bottom:0px;transition-timing-function: ease-in;}
 	100% {left:100%; bottom:0px;transition-timing-function: ease-in;}
 }
-
-#blinkingArrow{
-	left:20%;
-	top:10%;
-	width:30%;
-	
-}
