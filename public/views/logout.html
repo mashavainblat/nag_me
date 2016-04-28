@@ -1,2 +1,2 @@
-<p ng-if="bodyCtrl.user.firstName != null" >Hi, <span>{{bodyCtrl.user.firstName}}</span></p>
-<button ng-if="bodyCtrl.user.firstName != null" id="logoutButton" ng-click="logoutCtrl.logout()">Log Out</button>
+<p id="logoutName"ng-if="bodyCtrl.user.firstName != null" >Hi, <span><strong>{{bodyCtrl.user.firstName}}</strong></span></p>
+<button ng-if="bodyCtrl.user.firstName != null" id="logoutButton" ng-click="logoutCtrl.logout()"><p>Log Out</p></button>
