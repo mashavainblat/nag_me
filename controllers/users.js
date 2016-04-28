@@ -214,7 +214,7 @@ router.post("/addListItem/", isLoggedIn, function(req, res){
 						client.sendMessage({
 							to: "+1" + updatedUser.phoneNumber,
 							from: "+16313378288",
-							body: "https://www.google.com/?gws_rd=ssl#q=" + newListItem.listItem
+							body: "Hi " + updatedUser.firstName + ". You wanted to be nagged about " + newListItem.listItem + ". Click here: https://www.google.com/?gws_rd=ssl#q=" + newListItem.listItem
 						}, function(err, data){
 							if(err){
 								console.log("error: ", err);

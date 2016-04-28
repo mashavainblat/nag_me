@@ -1,7 +1,9 @@
 
 <!-- <div id="headerImgContainer"><img src="img/n_logo.png"></div> -->
-<form ng-submit="headerCtrl.addListItem()">
-	<input ng-model="headerCtrl.listItem" type="text" placeholder="Nag me about...">
-	<input ng-model="headerCtrl.status" type="hidden" value="active">
-	<button><img src="img/addRound_white.png"></button>
-</form>
+<div id="nagHeader">
+	<form ng-submit="headerCtrl.addListItem()">
+		<input ng-model="headerCtrl.listItem" type="text" placeholder="Nag me about...">
+		<input ng-model="headerCtrl.status" type="hidden" value="active">
+		<button id="addListItemButton"><img src="img/addRound_white.png"></button>
+	</form>
+</div>

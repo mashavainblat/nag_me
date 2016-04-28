@@ -1,4 +1,6 @@
-
+body{
+	overflow: hidden;
+}
 
 /* LOGIN/ SIGNUP FORM */
 /****************************************/
@@ -16,7 +18,7 @@ body #loginContentContainer, body #contentContainer{
 }
 
 body #contentContainer{
-	min-height:400px;
+	/*min-height:400px;*/
 }
 
 body #headlines{
@@ -69,7 +71,33 @@ body #formContainer button{
 /* MAIN LIST */
 /******************************************/
 
+#nagHeader, #list ul, footer{
+	padding:15px;
+}
 
+#header button#addListItemButton, #list button{
+	background-color:rgba(0, 0, 0, 0);
+	border:none;
+	width:30px;
+}
+
+#list button{
+	right:0;
+	position:absolute;
+	margin-right:10px;
+	padding-top:0;
+}
+
+#header button#addListItemButton img, #list button img{
+	width:100%;
+}
+
+
+#list ul{
+	margin-bottom:0px;
+	border-bottom:solid 0.5px #ccc;
+	width:100%;
+}
 
 
 
@@ -77,6 +105,17 @@ body #formContainer button{
 /******************************************/
 footer{
 	background-color:rgba(192, 66, 63, 1);
+	position:relative;
+}
+
+footer p{
+	display:inline;
+}
+
+footer button{
+	right:0;
+	position:absolute;
+	margin-right:15px;
 }
 
 
