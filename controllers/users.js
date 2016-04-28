@@ -52,9 +52,9 @@ router.post("/signup", passport.authenticate("local-signup",
 router.post("/login", passport.authenticate("local-login", 
 	{failureMessage: "fail"}), 
 	function(req, res){
-		// console.log("=======================================")
-		// console.log('User is logged in as: ', req.user);
-		// console.log("=======================================")
+		console.log("=======================================")
+		console.log('User is logged in as: ', req.user);
+		console.log("=======================================")
 		res.json(req.user)
 	}
 )
@@ -203,14 +203,18 @@ router.post("/addListItem/", isLoggedIn, function(req, res){
 				status: "active"
 			})
 
+			console.log("=============================")
 			console.log("newListItem: ", newListItem)
+			console.log("=============================")
 			newListItem.save(function(err, listData) {
 				// console.log("listData: ", listData)
 				user.list.push(listData);
 				user.save(function(err, updatedUser) {
 					// console.log("updatedUser.phoneNumber: ", updatedUser.phoneNumber)
 					// console.log("updatedUser: ", updatedUser)
+					console.log("=============================")
 					console.log("newListItem.listItem: ", newListItem.listItem)
+					console.log("=============================")
 						client.sendMessage({
 							to: "+1" + updatedUser.phoneNumber,
 							from: "+16313378288",

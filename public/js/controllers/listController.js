@@ -4,10 +4,13 @@ app.controller("ListController", ["$http", "$scope", function($http, $scope){
 	this.testList = "List"
 	var self = this;
 
+	console.log("self.user: " + self.user)
+
 	/* SCOPE LISTENERS */
 	/*********************************************/
 	$scope.$on("user-logged-in", function(eventObj, data){
-		self.user = data;
+		console.log(data)
+		// self.user = data;
 		// console.log("user-logged-in self.user: ", self.user)
 	})
 
@@ -33,8 +36,11 @@ app.controller("ListController", ["$http", "$scope", function($http, $scope){
 		// console.log("clicked listItem: ", listItem)
 		// console.log("index: ", index)
 		console.log("listItemId: ", listItemId)
-
+		console.log("=============================")
+		console.log(self.user)
+		console.log("=============================")
 		var userList = self.user.list;
+		console.log(userList)
 		userList.splice(index, 1);
 
 		$http.delete("/users/deleteListItem/" + listItemId).then(

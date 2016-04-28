@@ -15,8 +15,9 @@ app.controller("LoginController", ["$scope", "$http", function($scope, $http){
 			function(response){
 				// console.log(response.data)
 				self.user = response.data
-				// console.log("the user is: ", self.user)
+				console.log("the user is: ", self.user)
 				$scope.$emit("user-logged-in", self.user)
+				console.log("the emission has been made");
 				self.email = "";
 				self.password = "";
 			},

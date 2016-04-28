@@ -4,7 +4,7 @@ app.controller("HeaderController", ["$http", "$scope", "$routeParams", function(
 	var self = this;
 
 	this.addListItem = function(){
-		console.log()
+		console.log("adding")
 		$http({
 			method: "POST",
 			url: "/users/addListItem",
