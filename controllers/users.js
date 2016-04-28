@@ -215,10 +215,15 @@ router.post("/addListItem/", isLoggedIn, function(req, res){
 					console.log("=============================")
 					console.log("newListItem.listItem: ", newListItem.listItem)
 					console.log("=============================")
+
+					var newlyAddedListItem = newListItem.listItem
+					console.log("newlyAddedListItem: ", newlyAddedListItem)
+					var newlyAddedListItem = newlyAddedListItem.replace(/ /g, "+")
+					console.log("newlyAddedListItem: ", newlyAddedListItem)
 						client.sendMessage({
 							to: "+1" + updatedUser.phoneNumber,
 							from: "+16313378288",
-							body: "Hi " + updatedUser.firstName + ". You wanted to be nagged about " + newListItem.listItem + ". Click here: https://www.google.com/?gws_rd=ssl#q=" + newListItem.listItem
+							body: "Hi " + updatedUser.firstName + ". You wanted to be nagged about " + newListItem.listItem + ". Click here: https://www.google.com/?gws_rd=ssl#q=" + newlyAddedListItem
 						}, function(err, data){
 							if(err){
 								console.log("error: ", err);
