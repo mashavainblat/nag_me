@@ -338,3 +338,25 @@ footer button{
 	width:230px;
 	z-index: -10;
 }
+
+
+
+
+/***************************************/
+/* MEDIA QUERY */
+
+@media screen and (max-width:767px){
+	body #loginContentContainer, body #contentContainer{
+		/*background:beige;*/
+		/*width:295px;*/
+
+		/*position:fixed;*/
+		top:5%;
+		left:25%;
+		margin-top: 0px;
+		/*margin-left: -155px;*/
+
+		/*box-shadow: 0px 0px 10px 1px #838383;*/
+	}
+	
+}
